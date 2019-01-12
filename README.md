@@ -4,6 +4,7 @@ Telegram bot che emula (ironicamente) Google assistant da usare sia in chat priv
 
 
 ==========================
+
    GOOGLE BOT QUESTIONS
 ==========================
 
@@ -21,6 +22,7 @@ Telegram bot che emula (ironicamente) Google assistant da usare sia in chat priv
 - Buonanotte
 
 ==========================
+
    GOOGLE BOT COMMANDS
 ==========================
 [si aggiungono solo a 
@@ -32,6 +34,7 @@ testuali]
 - /ban
 
 ==========================
+
 - first release
 - v.1.0
 - dev: @mike_2000 (telegram username)
