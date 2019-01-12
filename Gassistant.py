@@ -22,8 +22,8 @@ def on_chat_message(msg):
             bot.sendMessage(chat_id, text="<b>Ciao %s</b>, sono ancora in fase di sviluppo, ma prima o poi sarò anche io una AI"%name, parse_mode=telegram.ParseMode.HTML)
 
         if txt == "/help@PythonAndroidbot":
-            var_lettura = open("/Users/michelemarcucci/PycharmProjects/Bot_test_1/help.txt", "r").read()
-            bot.sendMessage(chat_id, text=var_lettura)
+            var_lettura = open("/Users/name/directory/help.txt", "r").read()
+            bot.sendMessage(chat_id, text=var_lettura) #here put the file help.txt and write on it wat you want
 
 
 
@@ -37,8 +37,8 @@ def on_chat_message(msg):
             print("[%s] used CIA" %username)
 
         if txt.upper() == 'GOOGLE RACCONTAMI UNA BARZELLETTA' or txt.upper() == 'GOOGLE BARZELLETTA':
-            var_lettura = open("/Users/michelemarcucci/PycharmProjects/Bot_test_1/esempio.txt", "r").read()
-            bot.sendMessage(chat_id, text=var_lettura)
+            var_lettura = open("/Users/name/directory/esempio.txt", "r").read()
+            bot.sendMessage(chat_id, text=var_lettura) #here put the file esempio.txt and write on it what you want
             print("[%s] used BARZELLETTA" %username)
 
         if txt.upper() == 'COME STAI GOOGLE?' or txt.upper() == 'COME STAI GOOGLE' or txt.upper() == 'GOOGLE COME STAI?' or txt.upper() == 'GOOGLE COME STAI':
