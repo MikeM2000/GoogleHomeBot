@@ -53,7 +53,7 @@ def on_chat_message(msg):
 
 
             if var_numero == 2:
-                bot.sendMessage(chat_id, text="Stavo guardando video di gattini su Youtube insieme a @kriive")
+                bot.sendMessage(chat_id, text="Stavo guardando video di gattini su Youtube insieme a ...")
 
 
             if var_numero == 3:
@@ -79,7 +79,7 @@ def on_chat_message(msg):
                 bot.sendMessage(chat_id, text="preferirei non pronunciarmi")
 
             if var_numero == 2:
-                bot.sendMessage(chat_id, text="risponderà a questa domanda @pasqui1978")
+                bot.sendMessage(chat_id, text="risponderà a questa domanda ...")
 
             if var_numero == 3:
                 bot.sendMessage(chat_id, text="Al momento sono irraggiungibile, riprova tra MAI")
