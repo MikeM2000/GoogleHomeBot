@@ -116,7 +116,7 @@ def on_chat_message(msg):
 #==========================================
 #Token and bot main function that keeps it in loop
 
-TOKEN = '621843590:AAH-j-4HtXw7MRxE9qaEZJ88ttABxZ7IQJ4'
+TOKEN = '<INSERIRE TOKEN QUI>'
 
 bot = telepot.Bot(TOKEN)
 bot.message_loop(on_chat_message)
