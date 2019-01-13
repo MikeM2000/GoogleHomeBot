@@ -49,7 +49,7 @@ def on_chat_message(msg):
         # start command
         # -------------
         if txt == "/start@PythonAndroidbot":
-            bot.sendMessage(chat_id, text="<b>Ciao %s</b>, sono ancora in fase di sviluppo, ma prima o poi sarò anche io una AI"%name, parse_mode=telegram.ParseMode.HTML)
+            bot.sendMessage(chat_id, text="<b>Ciao {}</b>, sono ancora in fase di sviluppo, ma prima o poi sarò anche io una AI".format(name), parse_mode=telegram.ParseMode.HTML)
         
         # help command
         # ------------
@@ -60,52 +60,60 @@ def on_chat_message(msg):
         # custom reactions
         # ----------------
         if txt.upper() == 'HEY GOOGLE' or txt.upper() == 'OK GOOGLE':
-            bot.sendMessage(chat_id, text="Ciao %s, come posso aiutarti?"%name)
-            print("[%s] used OK GOOGLE"%username)
+            bot.sendMessage(chat_id, text="Ciao {}, come posso aiutarti?".format(name))
+            # log to screen
+            print("{} used OK GOOGLE".format(username))
 
         if txt.upper() == 'GOOGLE LAVORI PER LA CIA?' or txt.upper() == 'GOOGLE LAVORI PER LA CIA':
             bot.sendMessage(chat_id, text="Shut the FUCK UP!")
-            print("[%s] used CIA" %username)
+            # log to screen
+            print("{} used CIA".format(username))
 
         if txt.upper() == 'GOOGLE RACCONTAMI UNA BARZELLETTA' or txt.upper() == 'GOOGLE BARZELLETTA':
             var_lettura = open("/Users/name/directory/esempio.txt", "r").read()
             bot.sendMessage(chat_id, text=var_lettura) #here put the file esempio.txt and write on it what you want
-            print("[%s] used BARZELLETTA" %username)
+            # log to screen
+            print("{} used BARZELLETTA".format(username))
 
         if txt.upper() == 'COME STAI GOOGLE?' or txt.upper() == 'COME STAI GOOGLE' or txt.upper() == 'GOOGLE COME STAI?' or txt.upper() == 'GOOGLE COME STAI':
             bot.sendMessage(chat_id, text="Io sto bene %s, grazie per avermelo chiesto!"%name)
-            print("[%s] used COME STAI" %username)
+            # log to screen
+            print("{} used COME STAI".format(username))
 
         if txt.upper() == 'CHE FAI GOOGLE?' or txt.upper() == 'CHE FAI GOOGLE' or txt.upper() == 'COSA STAI FACENDO GOOGLE?' or txt.upper() == 'COSA STAI FACENDO GOOGLE':
 
             var_numero = random.randint(1,4)
             bot.sendMessage(chat_id, google_is_doing[var_numero])
-            print("[%s] used CHE FAI" %username)
+            # log to screen
+            print("{} used CHE FAI".format(username))
 
         if 'SIRI' in txt.upper():
             bot.sendMessage(chat_id, text="Non nominate quell'ammasso di If statement")
-            print("[%s] used SIRI" %username)
+            # log to screen
+            print("{} used SIRI".format(username))
 
         if 'CORTANA' in txt.upper():
             bot.sendMessage(chat_id, text="Cortana la putt...")
-            print("[%s] used CORTANA" %username)
+            # log to screen
+            print("{} used CORTANA".format(username))
 
         if 'GOOGLE COSA PENSI DI' in txt.upper():
             var_numero = random.randint(1, 4)
             bot.sendMessage(chat_id, google_is_thinking[var_numero])
-            print("[%s] used COSA PENSI" %username)
+            # log to screen
+            print("{} used COSA PENSI".format(username))
 
         if txt.upper() == 'CIAO GOOGLE':
-            bot.sendMessage(chat_id, text='Ciao a te, %s'%name)
+            bot.sendMessage(chat_id, text='Ciao a te, {}'.format(name))
 
         if txt.upper() == 'BUONASERA GOOGLE':
-            bot.sendMessage(chat_id, text='Buonasera a te, %s'%name)
+            bot.sendMessage(chat_id, text='Buonasera a te, {}'.format(name))
 
         if 'BUONANOTTE' in txt.upper():
-            bot.sendMessage(chat_id, text='Buonanotte a te, %s.\nSogni d\'oro'%name)
+            bot.sendMessage(chat_id, text='Buonanotte a te, {}.\nSogni d\'oro'.format(name))
 
         if 'BUONGIORNO' in txt.upper():
-            bot.sendMessage(chat_id, text='Buongiorno %s'%name)
+            bot.sendMessage(chat_id, text='Buongiorno {}'.format(name))
 
         if txt == '/nuke':
             bot.sendMessage(chat_id, text='<b>QUESTA NON E\' UN\'ESERCITAZIONE</b>\n\nRecarsi immediatamente al bunker antiatomico, ripeto <b>NON E\' UN\'ESERCITAZIONE</b>', parse_mode=telegram.ParseMode.HTML)
