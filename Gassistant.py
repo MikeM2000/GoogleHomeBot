@@ -1,33 +1,48 @@
-#==========================================
-#libraries here
-
+# libraries here
+# --------------
 import telepot
 import telegram as telegram
 import random
-#==========================================
 
-#==========================================
-#New function for messages from chat/groups
-
+# bot starts here
+# ---------------
 def on_chat_message(msg):
-    content_type, chat_type, chat_id = telepot.glance(msg)
+    """
+    ON_CHAT_MESSAGE reacts to user message
 
+    Parameters
+    ----------
+    msg (dict) : message sent by the user according to telegram API
+    """
+
+    # catch info from chat
+    content_type, chat_type, chat_id = telepot.glance(msg)
+    
+    # set reaction according to the input
     if content_type == 'text':
+
+        # grab information from message
+        # -----------------------------
+        # user info
         name = msg["from"]["first_name"]
         username = msg["from"]["username"]
         user_id = msg["from"]["id"]
+        # text of the message (filtering multiple spaces)
         txt = " ".join(msg['text'].split())
-
+        
+        # start command
+        # -------------
         if txt == "/start@PythonAndroidbot":
             bot.sendMessage(chat_id, text="<b>Ciao %s</b>, sono ancora in fase di sviluppo, ma prima o poi sarò anche io una AI"%name, parse_mode=telegram.ParseMode.HTML)
-
+        
+        # help command
+        # ------------
         if txt == "/help@PythonAndroidbot":
             var_lettura = open("/Users/name/directory/help.txt", "r").read()
             bot.sendMessage(chat_id, text=var_lettura) #here put the file help.txt and write on it wat you want
 
-
-
-
+        # custom reactions
+        # ----------------
         if txt.upper() == 'HEY GOOGLE' or txt.upper() == 'OK GOOGLE':
             bot.sendMessage(chat_id, text="Ciao %s, come posso aiutarti?"%name)
             print("[%s] used OK GOOGLE"%username)
@@ -109,12 +124,8 @@ def on_chat_message(msg):
             bot.sendMessage(chat_id, text='Chi è lo sfigato stavolta? -_-')
 
 
-
-
-#==========================================
-
-#==========================================
-#Token and bot main function that keeps it in loop
+# Token and bot main function that keeps it in loop
+# -------------------------------------------------
 
 TOKEN = '<INSERIRE TOKEN QUI>'
 
@@ -124,6 +135,3 @@ bot.message_loop(on_chat_message)
 import time
 while 1:
     time.sleep(10)
-
-# ==========================================
-#Finish :)
