@@ -2,6 +2,8 @@
 Telegram bot che emula (ironicamente) Google assistant da usare sia in chat privata che in gruppi e supergruppi.
 [INTERAMENTE IN LINGUA ITALIANA]
 
+Il Bot è stato realizzato per inserirlo nei gruppi facenti parte del network di @AOSPItalia
+
 
 ==========================
 
