@@ -4,6 +4,22 @@ import telepot
 import telegram as telegram
 import random
 
+# dictionaries
+# ------------
+# answers related to "CHE FAI GOOGLE?"
+google_is_doing = {1:"Stavo leggendo informazioni interessanti su Wikipedia",
+                   2:"Stavo guardando video di gattini su Youtube insieme a ...",
+                   3:"Sto finendo una serie su Netflix non disturbarmi!",
+                   4:"Stavo progettando un attacco informatico ai server Xiaomi insieme a Lorenzo"}
+# answer related to "GOOGLE COSA PENSI DI ..."
+google_is_thinking = {1:"preferirei non pronunciarmi",
+                      2:"risponderà a questa domanda ...",
+                      3:"Al momento sono irraggiungibile, riprova tra MAI",
+                      4:"Perchè me lo chiedi che tanto sai già che non so che dirti, " \
+                      "i dev sono persone etiche, se dici quello che pensi ti vanno tutti contro.\n" \
+                      "La gente vuole solo avere ragione senza informarsi, vedi i NO-VAX e i TERRAPIATTISTI." \
+                      " Che ne penso? FOTTE SEGA, vivi e lascia vivere"}
+
 # bot starts here
 # ---------------
 def on_chat_message(msg):
@@ -63,21 +79,7 @@ def on_chat_message(msg):
         if txt.upper() == 'CHE FAI GOOGLE?' or txt.upper() == 'CHE FAI GOOGLE' or txt.upper() == 'COSA STAI FACENDO GOOGLE?' or txt.upper() == 'COSA STAI FACENDO GOOGLE':
 
             var_numero = random.randint(1,4)
-            if var_numero == 1:
-                bot.sendMessage(chat_id, text="Stavo leggendo informazioni interessanti su Wikipedia")
-
-
-            if var_numero == 2:
-                bot.sendMessage(chat_id, text="Stavo guardando video di gattini su Youtube insieme a ...")
-
-
-            if var_numero == 3:
-                bot.sendMessage(chat_id, text="Sto finendo una serie su Netflix non disturbarmi!")
-
-
-            if var_numero == 4:
-                bot.sendMessage(chat_id, text="Stavo progettando un attacco informatico ai server Xiaomi insieme a Lorenzo")
-
+            bot.sendMessage(chat_id, google_is_doing[var_numero])
             print("[%s] used CHE FAI" %username)
 
         if 'SIRI' in txt.upper():
@@ -90,20 +92,8 @@ def on_chat_message(msg):
 
         if 'GOOGLE COSA PENSI DI' in txt.upper():
             var_numero = random.randint(1, 4)
-            if var_numero == 1:
-                bot.sendMessage(chat_id, text="preferirei non pronunciarmi")
-
-            if var_numero == 2:
-                bot.sendMessage(chat_id, text="risponderà a questa domanda ...")
-
-            if var_numero == 3:
-                bot.sendMessage(chat_id, text="Al momento sono irraggiungibile, riprova tra MAI")
-
-            if var_numero == 4:
-                bot.sendMessage(chat_id,
-                                text="Perchè me lo chiedi che tanto sai già che non so che dirti, i dev sono persone etiche, se dici quello che pensi ti vanno tutti contro.\n"
-                                     "La gente vuole solo avere ragione senza informarsi, vedi i NO-VAX e i TERRAPIATTISTI. Che ne penso? FOTTE SEGA, vivi e lascia vivere")
-                print("[%s] used COSA PENSI" %username)
+            bot.sendMessage(chat_id, google_is_thinking[var_numero])
+            print("[%s] used COSA PENSI" %username)
 
         if txt.upper() == 'CIAO GOOGLE':
             bot.sendMessage(chat_id, text='Ciao a te, %s'%name)
