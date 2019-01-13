@@ -16,7 +16,7 @@ def on_chat_message(msg):
         name = msg["from"]["first_name"]
         username = msg["from"]["username"]
         user_id = msg["from"]["id"]
-        txt = msg['text']
+        txt = " ".join(msg['text'].split())
 
         if txt == "/start@PythonAndroidbot":
             bot.sendMessage(chat_id, text="<b>Ciao %s</b>, sono ancora in fase di sviluppo, ma prima o poi sarò anche io una AI"%name, parse_mode=telegram.ParseMode.HTML)
