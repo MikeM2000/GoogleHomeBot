@@ -133,8 +133,11 @@ def on_chat_message(msg):
             var_messaggio = var_messaggio.replace("GOOGLE DEFINISCI ", "")
             print("{} searced a word".format(username))
             wikipedia.set_lang("it")
-            definition = wikipedia.summary(var_messaggio, sentences=3)
-            bot.sendMessage(chat_id, text=definition)
+            try:
+                definition = wikipedia.summary(var_messaggio, sentences=3)
+                bot.sendMessage(chat_id, text=definition)
+            except:
+                bot.sendMessage(chat_id, text="Mi spiace {}, non ho trovato nulla riguardo '{}'".format(name, var_messaggio))
 
 
         # Commands in @AOSPItalia network
