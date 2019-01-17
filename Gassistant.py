@@ -1,8 +1,14 @@
+# ------------------------------------
+# G-Assistant.py
+# Telegram bot developed by @mike_2000
+# v.1.0 - stable
+# ------------------------------------
 # libraries here
 # --------------
 import telepot
 import telegram as telegram
 import random
+import wikipedia
 
 # dictionaries
 # ------------
@@ -10,7 +16,10 @@ import random
 google_is_doing = {1:"Stavo leggendo informazioni interessanti su Wikipedia",
                    2:"Stavo guardando video di gattini su Youtube insieme a ...",
                    3:"Sto finendo una serie su Netflix non disturbarmi!",
-                   4:"Stavo progettando un attacco informatico ai server Xiaomi insieme a Lorenzo"}
+                   4:"Stavo progettando un attacco informatico ai server Xiaomi insieme a Lorenzo",
+                   5: "Ca**i miei no?",
+                   6: "Non è come sembra, posso spiegare!"}
+
 # answer related to "GOOGLE COSA PENSI DI ..."
 google_is_thinking = {1:"preferirei non pronunciarmi",
                       2:"risponderà a questa domanda ...",
@@ -18,7 +27,9 @@ google_is_thinking = {1:"preferirei non pronunciarmi",
                       4:"Perchè me lo chiedi che tanto sai già che non so che dirti, " \
                       "i dev sono persone etiche, se dici quello che pensi ti vanno tutti contro.\n" \
                       "La gente vuole solo avere ragione senza informarsi, vedi i NO-VAX e i TERRAPIATTISTI." \
-                      " Che ne penso? FOTTE SEGA, vivi e lascia vivere"}
+                      " Che ne penso? FOTTE SEGA, vivi e lascia vivere",
+                      5: "Argomento INTERESSANTISSIMO",
+                      6: "Ehm...\n\n*driiiiiin*\n\nScusa mi vogliono al telefono, ne parliamo dopo, addio."}
 
 # bot starts here
 # ---------------
@@ -82,7 +93,7 @@ def on_chat_message(msg):
 
         if txt.upper() == 'CHE FAI GOOGLE?' or txt.upper() == 'CHE FAI GOOGLE' or txt.upper() == 'COSA STAI FACENDO GOOGLE?' or txt.upper() == 'COSA STAI FACENDO GOOGLE':
 
-            var_numero = random.randint(1,4)
+            var_numero = random.randint(1,6)
             bot.sendMessage(chat_id, google_is_doing[var_numero])
             # log to screen
             print("{} used CHE FAI".format(username))
@@ -98,7 +109,7 @@ def on_chat_message(msg):
             print("{} used CORTANA".format(username))
 
         if 'GOOGLE COSA PENSI DI' in txt.upper():
-            var_numero = random.randint(1, 4)
+            var_numero = random.randint(1, 6)
             bot.sendMessage(chat_id, google_is_thinking[var_numero])
             # log to screen
             print("{} used COSA PENSI".format(username))
@@ -114,7 +125,20 @@ def on_chat_message(msg):
 
         if 'BUONGIORNO' in txt.upper():
             bot.sendMessage(chat_id, text='Buongiorno {}'.format(name))
+            
+        # New Function [17/01/2019] search a definition
+        # ---------------------------------------------
+        if 'GOOGLE DEFINISCI' in txt.upper():
+            var_messaggio = txt.upper()
+            var_messaggio = var_messaggio.replace("GOOGLE DEFINISCI ", "")
+            print("{} searced a word".format(username))
+            wikipedia.set_lang("it")
+            definition = wikipedia.summary(var_messaggio, sentences=3)
+            bot.sendMessage(chat_id, text=definition)
 
+
+        # Commands in @AOSPItalia network
+        # -------------------------------
         if txt == '/nuke':
             bot.sendMessage(chat_id, text='<b>QUESTA NON E\' UN\'ESERCITAZIONE</b>\n\nRecarsi immediatamente al bunker antiatomico, ripeto <b>NON E\' UN\'ESERCITAZIONE</b>', parse_mode=telegram.ParseMode.HTML)
 
