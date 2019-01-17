@@ -5,10 +5,9 @@ Telegram bot che emula (ironicamente) Google assistant da usare sia in chat priv
 Il Bot è stato realizzato per inserirlo nei gruppi facenti parte del network di @AOSPItalia
 
 
-==========================
 
-   GOOGLE BOT QUESTIONS
-==========================
+
+## GOOGLE BOT QUESTIONS
 
 - Ok google / hey google
 - Google lavori per la cia?
@@ -17,16 +16,20 @@ Il Bot è stato realizzato per inserirlo nei gruppi facenti parte del network di
 - Che fai google
 - Siri
 - Cortana
-- Google cosa pensi di...
+- Google cosa pensi di <nome> 
 - Ciao Google
 - Buonasera Google
 - Buongiorno 
 - Buonanotte
 
-==========================
 
-   GOOGLE BOT COMMANDS
-==========================
+## GOOGLE BOT FUNCTION
+
+- Google definisci <nome> --> fornisce la definizione da Wikipedia
+
+
+## GOOGLE BOT COMMANDS
+
 [si aggiungono solo a 
 comandi già esistenti 
 di GH, per dare risposte
@@ -38,6 +41,6 @@ testuali]
 ==========================
 
 - first release
-- v.1.0
+- v.1.0 - stable
 - dev: @mike_2000 (telegram username)
 
