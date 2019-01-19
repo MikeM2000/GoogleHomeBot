@@ -187,6 +187,13 @@ def on_chat_message(msg):
         # --------------------------------------
         l_message = open("/Users/name/directory/log?.txt", "r").read()
         #print("After command loop: {}".format(l_message))
+        
+        # check.LOG function
+        # ------------------
+        if l_message == "1":
+            message = txt;
+            open("/Users/name/directory/log.txt", "a").write("[{}]: {}\n".format(username, message))
+
 
 
 # Token and bot main function that keeps it in loop
