@@ -159,13 +159,13 @@ def on_chat_message(msg):
         
         # Admin-Only commands [18/01/2019]
         # --------------------------------
-        # NEED TO FIX, user_id is int, admin_id is char
         if txt.upper() == '/LOGON':
-            admin_id = open("/Users/name/directory/admin.txt", "r").read()
+            admin_id = open("/Users/name/directory/admin.txt", "r").read() #insert in admin.txt your user_id
             print(admin_id)
+            admin_id = int(admin_id, 10)
             command_input = user_id
 
-            if command_input == '<Insert Here Your id>': #need to fix
+            if command_input == admin_id: #need to fix
                 bot.sendMessage(chat_id, text="Comando riservato agli admin [test]:\nLog messaggi attivato")
                 open("/Users/name/directory/log?.txt", "w").write("1")
                 print(l_message)
@@ -175,9 +175,10 @@ def on_chat_message(msg):
         if txt.upper() == '/LOGOFF':
             admin_id = open("/Users/name/directory/admin.txt", "r").read()
             print(admin_id)
+            admin_id = int(admin_id, 10)
             command_input = user_id
 
-            if command_input == '<Insert Here Your id>':
+            if command_input == admin_id:
                 bot.sendMessage(chat_id, text="Comando riservato agli admin [test]:\nLog messaggi disattivato")
                 open("/Users/name/directory/log?.txt", "w").write("0")
                 print(l_message)
