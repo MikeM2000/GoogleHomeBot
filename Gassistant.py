@@ -1,7 +1,7 @@
 # ------------------------------------
 # G-Assistant.py
 # Telegram bot developed by @mike_2000
-# v.1.0 - stable
+# v.1.1 - beta1
 # ------------------------------------
 # libraries here
 # --------------
@@ -9,27 +9,14 @@ import telepot
 import telegram as telegram
 import random
 import wikipedia
+import time
 
-# dictionaries
-# ------------
-# answers related to "CHE FAI GOOGLE?"
-google_is_doing = {1:"Stavo leggendo informazioni interessanti su Wikipedia",
-                   2:"Stavo guardando video di gattini su Youtube insieme a ...",
-                   3:"Sto finendo una serie su Netflix non disturbarmi!",
-                   4:"Stavo progettando un attacco informatico ai server Xiaomi insieme a Lorenzo",
-                   5: "Ca**i miei no?",
-                   6: "Non è come sembra, posso spiegare!"}
+# print on log.txt file the "localtime" whenever you run the bot
+# --------------------------------------------------------------
+localtime = time.asctime( time.localtime(time.time()) )
+open("/Users/michelemarcucci/PycharmProjects/Bot_test_1/log.txt", "a").write("\n\n{}\n\n".format(localtime))
 
-# answer related to "GOOGLE COSA PENSI DI ..."
-google_is_thinking = {1:"preferirei non pronunciarmi",
-                      2:"risponderà a questa domanda ...",
-                      3:"Al momento sono irraggiungibile, riprova tra MAI",
-                      4:"Perchè me lo chiedi che tanto sai già che non so che dirti, " \
-                      "i dev sono persone etiche, se dici quello che pensi ti vanno tutti contro.\n" \
-                      "La gente vuole solo avere ragione senza informarsi, vedi i NO-VAX e i TERRAPIATTISTI." \
-                      " Che ne penso? FOTTE SEGA, vivi e lascia vivere",
-                      5: "Argomento INTERESSANTISSIMO",
-                      6: "Ehm...\n\n*driiiiiin*\n\nScusa mi vogliono al telefono, ne parliamo dopo, addio."}
+
 
 # bot starts here
 # ---------------
@@ -45,17 +32,38 @@ def on_chat_message(msg):
     # catch info from chat
     content_type, chat_type, chat_id = telepot.glance(msg)
     
+    # grab information from message
+    # -----------------------------
+    # user info
+    name = msg["from"]["first_name"]
+    username = msg["from"]["username"]
+    user_id = msg["from"]["id"]
+    # text of the message (filtering multiple spaces)
+    txt = " ".join(msg['text'].split())
+        
+    # dictionaries
+    # ------------
+    # answers related to "CHE FAI GOOGLE?"
+    google_is_doing = {1:"Stavo leggendo informazioni interessanti su Wikipedia",
+                       2:"Stavo guardando video di gattini su Youtube insieme a ...",
+                       3:"Sto finendo una serie su Netflix non disturbarmi!",
+                       4:"Stavo progettando un attacco informatico ai server Xiaomi insieme a Lorenzo",
+                       5: "Ca**i miei no?",
+                       6: "Non è come sembra, posso spiegare!"}
+
+    # answer related to "GOOGLE COSA PENSI DI ..."
+    google_is_thinking = {1:"preferirei non pronunciarmi",
+                          2:"risponderà a questa domanda ...",
+                          3:"Al momento sono irraggiungibile, riprova tra MAI",
+                          4:"Perchè me lo chiedi che tanto sai già che non so che dirti, " \
+                            "i dev sono persone etiche, se dici quello che pensi ti vanno tutti contro.\n" \
+                            "La gente vuole solo avere ragione senza informarsi, vedi i NO-VAX e i TERRAPIATTISTI." \
+                            " Che ne penso? FOTTE SEGA, vivi e lascia vivere",
+                          5: "Argomento INTERESSANTISSIMO",
+                          6: "Ehm...\n\n*driiiiiin*\n\nScusa mi vogliono al telefono, ne parliamo dopo, addio."}
+    
     # set reaction according to the input
     if content_type == 'text':
-
-        # grab information from message
-        # -----------------------------
-        # user info
-        name = msg["from"]["first_name"]
-        username = msg["from"]["username"]
-        user_id = msg["from"]["id"]
-        # text of the message (filtering multiple spaces)
-        txt = " ".join(msg['text'].split())
         
         # start command
         # -------------
@@ -147,6 +155,37 @@ def on_chat_message(msg):
 
         if txt == '/ban':
             bot.sendMessage(chat_id, text='Chi è lo sfigato stavolta? -_-')
+            
+        
+        # Admin-Only commands [18/01/2019]
+        # --------------------------------
+        # NEED TO FIX, user_id is int, admin_id is char
+        if txt.upper() == '/LOGON':
+            admin_id = open("/Users/name/directory/admin.txt", "r").read()
+            print(admin_id)
+            command_input = user_id
+
+            if command_input == '<Insert Here Your id>': #need to fix
+                bot.sendMessage(chat_id, text="Comando riservato agli admin [test]:\nLog messaggi attivato")
+                open("/Users/name/directory/log?.txt", "w").write("1")
+                print(l_message)
+
+
+
+        if txt.upper() == '/LOGOFF':
+            admin_id = open("/Users/name/directory/admin.txt", "r").read()
+            print(admin_id)
+            command_input = user_id
+
+            if command_input == '<Insert Here Your id>':
+                bot.sendMessage(chat_id, text="Comando riservato agli admin [test]:\nLog messaggi disattivato")
+                open("/Users/name/directory/log?.txt", "w").write("0")
+                print(l_message)
+
+        # check log permission and log on screen
+        # --------------------------------------
+        l_message = open("/Users/name/directory/log?.txt", "r").read()
+        #print("After command loop: {}".format(l_message))
 
 
 # Token and bot main function that keeps it in loop
@@ -157,6 +196,5 @@ TOKEN = '<INSERIRE TOKEN QUI>'
 bot = telepot.Bot(TOKEN)
 bot.message_loop(on_chat_message)
 
-import time
 while 1:
     time.sleep(10)
