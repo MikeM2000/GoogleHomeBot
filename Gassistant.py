@@ -191,7 +191,7 @@ def on_chat_message(msg):
         # check.LOG function
         # ------------------
         if l_message == "1":
-            message = txt;
+            message = txt
             open("/Users/name/directory/log.txt", "a").write("[{}]: {}\n".format(username, message))
 
 
