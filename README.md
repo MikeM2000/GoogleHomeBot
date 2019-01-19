@@ -26,7 +26,8 @@ Il Bot è stato realizzato per inserirlo nei gruppi facenti parte del network di
 ## GOOGLE BOT FUNCTION
 
 - Google definisci <nome> --> fornisce la definizione da Wikipedia
-
+- /logon --> attiva log dei messaggi inviati
+- /logoff --> disattiva log messaggi inviati
 
 ## GOOGLE BOT COMMANDS
 
