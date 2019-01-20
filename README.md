@@ -42,6 +42,6 @@ testuali]
 ==========================
 
 - first release
-- v.1.0 - stable
+- v.1.1 - stable
 - dev: @mike_2000 (telegram username)
 
