@@ -1,7 +1,7 @@
 # ------------------------------------
 # G-Assistant.py
 # Telegram bot developed by @mike_2000
-# v.1.1 - beta1
+# v.1.1 - stable
 # ------------------------------------
 # libraries here
 # --------------
@@ -182,6 +182,15 @@ def on_chat_message(msg):
                 bot.sendMessage(chat_id, text="Comando riservato agli admin [test]:\nLog messaggi disattivato")
                 open("/Users/name/directory/log?.txt", "w").write("0")
                 print(l_message)
+                
+        if txt.upper() == '/SOURCE':
+        bot.sendMessage(chat_id, text="<b>     Google Home Bot</b>\n"
+                                      "====================\n\n"
+                                      "<b>Files</b>:\n<em>- Gassistant.py\n- admin.txt\n- log.txt\n- log?.txt\n- esempio.txt</em>\n\n"
+                                      "<b>Languages:</b> <em>Italian</em>\n\n"
+                                      "<b>Version</b>:<em> v.1.1 - stable</em>\n\n"
+                                      "<b>Source</b>:  <a href=\"https://github.com/MikeM2000/GoogleHomeBot\">GitHub</a> ", parse_mode=telegram.ParseMode.HTML)
+
 
         # check log permission and log on screen
         # --------------------------------------
