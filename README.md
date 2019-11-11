@@ -1,4 +1,4 @@
-# GoogleHomeBot
+# GoogleHomeBot[deprecated]
 Telegram bot che emula (ironicamente) Google assistant da usare sia in chat privata che in gruppi e supergruppi.
 **[INTERAMENTE IN LINGUA ITALIANA]**
 
